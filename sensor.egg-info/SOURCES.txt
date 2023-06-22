@@ -5,3 +5,6 @@ sensor.egg-info/SOURCES.txt
 sensor.egg-info/dependency_links.txt
 sensor.egg-info/requires.txt
 sensor.egg-info/top_level.txt
+sensor/Entity/__init__.py
+sensor/Entity/artificat_entity.py
+sensor/Entity/config_entity.py
