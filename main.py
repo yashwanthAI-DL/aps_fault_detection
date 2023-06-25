@@ -1,5 +1,23 @@
 import pymongo
+from sensor.utils import get_collection_as_dataframe
+import os,sys
+from sensor.Entity.config_entity import TrainingPipelineConfig
+from sensor.Entity.config_entity import DataIngestionConfig
+from sensor.Components import data_ingestion
+from sensor import exception
 
+if __name__=="__main__":
+     try:
+          training_pipeline_config=TrainingPipelineConfig()
+          data_ingestion_config=DataIngestionConfig(training_pipeline_config)
+          print(data_ingestion_config.to_dict())
+          data_ingestion=data_ingestion.DataIngestion(data_ingestion_config=data_ingestion_config)
+          print(data_ingestion.initiate_data_ingestion())
+
+     except Exception as e:
+          raise exception.SensorException(e, sys)
+
+'''
 # Provide the mongodb localhost url to connect python to mongodb.
 client = pymongo.MongoClient("mongodb://localhost:27017/neurolabDB")
 
@@ -23,3 +41,4 @@ all_record = collection.find()
 # Printing all records present in the collection
 for idx, record in enumerate(all_record):
      print(f"{idx}: {record}")
+'''

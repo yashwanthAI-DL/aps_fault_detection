@@ -1,0 +1,15 @@
+[ 2023-06-25 14:18:38,071 ] 14 root - INFO - >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Data Ingestion <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+[ 2023-06-25 14:18:38,071 ] 21 root - INFO - Exporting collection data as pandas dataframe
+[ 2023-06-25 14:18:38,071 ] 18 root - INFO - Reading data from database: aps and collection: sensor
+[ 2023-06-25 14:18:44,332 ] 20 root - INFO - Found columns: Index(['_id', 'class', 'aa_000', 'ab_000', 'ac_000', 'ad_000', 'ae_000',
+       'af_000', 'ag_000', 'ag_001',
+       ...
+       'ee_002', 'ee_003', 'ee_004', 'ee_005', 'ee_006', 'ee_007', 'ee_008',
+       'ee_009', 'ef_000', 'eg_000'],
+      dtype='object', length=172)
+[ 2023-06-25 14:18:44,333 ] 22 root - INFO - Dropping column: _id 
+[ 2023-06-25 14:18:44,538 ] 24 root - INFO - Row and columns in df: (36188, 171)
+[ 2023-06-25 14:18:44,538 ] 27 root - INFO - Save data in feature store
+[ 2023-06-25 14:18:46,287 ] 33 root - INFO - Create feature store folder if not available
+[ 2023-06-25 14:18:46,288 ] 37 root - INFO - Save df to feature store folder
+[ 2023-06-25 14:18:48,207 ] 42 root - INFO - split dataset into train and test set
