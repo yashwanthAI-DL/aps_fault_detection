@@ -5,6 +5,9 @@ from sensor.Entity.config_entity import TrainingPipelineConfig
 from sensor.Entity.config_entity import DataIngestionConfig
 from sensor.Components import data_ingestion
 from sensor import exception
+from sensor.Components.data_ingestion import DataIngestion
+from sensor.Components.data_validation import DataValdiation
+from sensor.Entity import config_entity
 
 if __name__=="__main__":
      try:
@@ -12,7 +15,14 @@ if __name__=="__main__":
           data_ingestion_config=DataIngestionConfig(training_pipeline_config)
           print(data_ingestion_config.to_dict())
           data_ingestion=data_ingestion.DataIngestion(data_ingestion_config=data_ingestion_config)
-          print(data_ingestion.initiate_data_ingestion())
+     
+          data_ingestion_artifact=data_ingestion.initiate_data_ingestion()
+          data_validation_config=config_entity.DataValidationConfig(training_pipeline_config=training_pipeline_config)
+          data_validation=DataValdiation(data_validation_config=data_validation_config, data_ingestion_artifact=data_ingestion_artifact)
+
+          data_validation_artifact=data_validation.initiate_data_validation()
+
+
 
      except Exception as e:
           raise exception.SensorException(e, sys)
