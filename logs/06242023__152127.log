@@ -1,3 +1,0 @@
-[ 2023-06-24 15:21:27,198 ] 18 root - INFO - Reading data from database: aps and collection: sensor
-[ 2023-06-24 15:21:27,203 ] 20 root - INFO - Found columns: RangeIndex(start=0, stop=0, step=1)
-[ 2023-06-24 15:21:27,203 ] 24 root - INFO - Row and columns in df: (0, 0)

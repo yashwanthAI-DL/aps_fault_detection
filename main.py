@@ -9,6 +9,8 @@ from sensor.Components.data_ingestion import DataIngestion
 from sensor.Components.data_validation import DataValdiation
 from sensor.Components.data_transformation import DataTransformation
 from sensor.Components.model_traininer import ModelTrainer
+from sensor.Components.model_evaluation import ModelEvaluation
+from sensor.Components.model_pusher import ModelPusher
 from sensor.Entity import config_entity
 
 if __name__=="__main__":
@@ -33,6 +35,20 @@ if __name__=="__main__":
           model_trainer_config=config_entity.ModelTrainingConfig(training_pipeline_config=training_pipeline_config)
           model_trainer=ModelTrainer(model_trainer_config=model_trainer_config, data_transformation_artifact=data_transformation_artifact)
           model_trainer_artifact=model_trainer.initiate_model_trainer()
+
+          # model evaluator
+          model_eval_config=config_entity.ModelEvaluationConfig(training_pipeline_config=training_pipeline_config)
+          model_eval= ModelEvaluation(model_eval_config=model_eval_config, data_ingestion_artifact=data_ingestion_artifact, data_transformation_artifact=data_transformation_artifact,
+          model_trainer_artifact=model_trainer_artifact)
+          model_eval_artifact=model_eval.initiate_model_evaluation()
+
+
+          #model Pusher
+          model_pusher_config=config_entity.ModelPusherConfig(training_pipeline_config=training_pipeline_config)
+          model_pusher=ModelPusher(model_pusher_config=model_pusher_config, data_transformation_artifact=data_transformation_artifact,
+           model_trainer_artifact=model_trainer_artifact)
+          model_pusher_artifact = model_pusher.initiate_model_pusher()
+
 
      except Exception as e:
           raise exception.SensorException(e, sys)

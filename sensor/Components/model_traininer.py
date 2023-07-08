@@ -39,7 +39,7 @@ class ModelTrainer:
         except Exception as e:
             raise SensorException(e, sys)
 
-    def initiate_model_trainer(self,)->artifact_entity.ModelTrainingArtifact:
+    def initiate_model_trainer(self,)->artifact_entity.ModelTrainerArtifact:
         try:
             logging.info(f"Loading train and test array.")
             train_arr = utils.load_numpy_array_data(file_path=self.data_transformation_artifact.transformed_train_path)
@@ -79,7 +79,7 @@ class ModelTrainer:
 
             #prepare artifact
             logging.info(f"Prepare the artifact")
-            model_trainer_artifact  = artifact_entity.ModelTrainingArtifact(model_path=self.model_trainer_config.model_path, 
+            model_trainer_artifact  = artifact_entity.ModelTrainerArtifact(model_path=self.model_trainer_config.model_path, 
             f1_train_score=f1_train_score, f1_test_score=f1_test_score)
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
             return model_trainer_artifact
