@@ -1,3 +1,24 @@
+from sensor.Pipeline.batch_prediction import start_batch_prediction
+from sensor.Pipeline.training_pipeline import start_training_pipeline
+
+file_path="/config/workspace/aps_failure_training_set1.csv"
+print(__name__)
+if __name__=="__main__":
+     try:
+          #start_training_pipeline()
+          output_file = start_batch_prediction(input_file_path=file_path)
+          print(output_file)
+     except Exception as e:
+          print(e)
+
+
+
+
+
+
+'''
+#for testing training pipeline
+
 import pymongo
 from sensor.utils import get_collection_as_dataframe
 import os,sys
@@ -53,7 +74,9 @@ if __name__=="__main__":
      except Exception as e:
           raise exception.SensorException(e, sys)
 
-'''
+#end of for testing training pipeline code
+
+
 # Provide the mongodb localhost url to connect python to mongodb.
 client = pymongo.MongoClient("mongodb://localhost:27017/neurolabDB")
 

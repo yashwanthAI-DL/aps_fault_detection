@@ -87,9 +87,3 @@ class ModelResolver:
             return os.path.join(latest_dir,self.target_encoder_dir_name,TARGET_ENCODER_OBJECT_FILE_NAME)
         except Exception as e:
             raise e
-
-
-
-class Predictor:
-    def __init__(self,model_resolver:ModelResolver):
-        self.model_resolver=model_resolver
